@@ -17,7 +17,7 @@ function Tooltip({ text, children, color }) {
       {children}
       {showTooltip && (
         <div
-          className={`absolute left-0 top-full mt-2 p-1 ${tooltipColor[color]} rounded-md text-sm`}
+          className={`absolute right-4 bottom-12 mt-1 px-2 py-1 ${tooltipColor[color]} rounded-md text-sm`}
         >
           {text}
         </div>

@@ -3,11 +3,12 @@ function Button({ label, onClick, color }) {
     black: "bg-black text-white",
     white: "bg-white text-black",
     blue: "bg-blue-600 text-white",
+    red: "bg-red-500 text-brown-500",
   };
   return (
     <button
       onClick={onClick}
-      className={` ${buttonColor[color]} px-4 py-2  rounded-md shadow-lg`}
+      className={` ${buttonColor[color]} px-4 py-2 m-1 rounded-md shadow-lg`}
     >
       {label}
     </button>

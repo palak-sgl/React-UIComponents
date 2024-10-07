@@ -6,7 +6,7 @@ function Textarea(props) {
   return (
     <textarea
       placeholder={placeholder}
-      className="border rounded p-2 focus:outline ring-1 focus-within:outline-indigo-500 mt-2 "
+      className="border rounded w-full p-2 focus:outline ring-1 focus-within:outline-indigo-500 mt-2 "
     ></textarea>
   );
 }
