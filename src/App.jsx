@@ -15,7 +15,7 @@ import Input from "./components/UI/Input";
 import Popover from "./components/UI/Popover";
 import Tabs from "./components/UI/Tabs";
 import Carousel from "./components/UI/Carousel";
-// import ToggleSwitch from "./components/UI/ToggleSwitch";
+import ToggleSwitch from "./components/UI/ToggleSwitch";
 
 function App() {
   const images = [
@@ -28,12 +28,14 @@ function App() {
   const updateTab = (tabNumber) => {
     setActiveTab(tabNumber);
   };
+
+  const [isToggleOn, setIsToggleOn] = useState(false);
+  const handleToggle = () => setIsToggleOn(!isToggleOn);
   // const [checked, setChecked] = useState(false);
   // const [gender, setGender] = useState("male");
   const [selectedDate, setSelectedDate] = useState("");
   const [progressValue, setProgressValue] = useState(30);
   const handleDateChange = (e) => setSelectedDate(e.target.value);
-  const handleToggle = () => setIsOn(!isOn);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 gap-10">
@@ -41,9 +43,11 @@ function App() {
         <div className="p-10 bg-gray-200 rounded-lg shadow-lg flex flex-col space-y-6 ">
           {/* Badge Component */}
           <div className="flex gap-2">
-            <Badge label="badge 1" color={"red"} />
-            <Badge label="badge 2" color={"yellow"} />
-            <Badge label="badge 3" color={"transparent"} />
+            <Badge label="Danger" color={"red"} />
+            <Badge label="Pending" color={"yellow"} />
+            <Badge label="Success" color={"transparent"} />
+            <Badge label="New" color={"indigo"} />
+            <Badge label="Active" color={"blue"} />
           </div>
 
           {/* Card Component */}
@@ -52,23 +56,29 @@ function App() {
               title="Card Title"
               titleColor="red"
               contentColor="blue"
-              content="This is the card content."
+              content="Welcome, this is Card component"
             />
             <Card
               title="Card Title"
               titleColor="yellow"
               content="This is the card content."
             />
+            <Card
+              title="Card Title"
+              titleColor="green"
+              contentColor="red"
+              content="This is the card content."
+            />
           </div>
           <br />
           {/* Tooltip with Button */}
           <div className="flex flex-row gap-2">
-            <Tooltip text="This is a tooltip" color={"black"}>
-              <Button label="Hover for tooltip!" color={"white"} />
+            <Tooltip text="Are you sure?" color={"black"}>
+              <Button label="Hover for Cancel!" color={"white"} />
             </Tooltip>
 
             <br />
-            <Tooltip text="This is a tooltip" color={"white"}>
+            <Tooltip text="This is a tooltip" color={"red"}>
               <Button label="Hover for tooltip!" color={"black"} />
             </Tooltip>
             <br />
@@ -82,11 +92,12 @@ function App() {
             <div className="float-left">
               <Label someLabel="Select a fruit" />
               <Select
+                placeholder="Choose One"
+                defaultValue="Choose"
                 options={[
                   { label: "Apple", value: "1" },
                   { label: "Banana", value: "2" },
                 ]}
-                placeholder="Choose One"
               />
             </div>
             <div className="float-right">
@@ -125,18 +136,26 @@ function App() {
           <div className="flex flex-row gap-2">
             <Button
               label="Submit"
-              color="black"
+              color="green"
               onClick={() => alert("Submitted!")}
             />
             <Button
-              label="Submit"
-              color="white"
+              label="Cancel"
+              color="red"
               onClick={() => alert("Submitted!")}
             />
             <Button
-              label="Submit"
+              label="Login"
               color="blue"
               onClick={() => alert("Submitted!")}
+            />
+          </div>
+          <div>
+            <Label someLabel="Toggle Switch"></Label>
+            <ToggleSwitch
+              isOn={isToggleOn}
+              handleToggle={handleToggle}
+              color="blue"
             />
           </div>
           {/* Popover */}
@@ -173,15 +192,16 @@ function App() {
           </div>
 
           {/* Date Picker */}
-          <div>
-            <Label someLabel="Select Date" />
-            <DatePicker value={selectedDate} onChange={handleDateChange} />
-          </div>
-
-          {/* Progress Component */}
-          <div>
-            <Label someLabel="Progress" />
-            <Progress value={progressValue} />
+          <div className="float">
+            <div className="float-left">
+              <Label someLabel="Select Date" />
+              <DatePicker value={selectedDate} onChange={handleDateChange} />
+            </div>
+            <div className="float-right">
+              <Label someLabel="Progress" />
+              <Progress value={progressValue} />
+              <p className="text-xs mt-1">{progressValue}%</p>
+            </div>
           </div>
           <div>
             <Label someLabel="Image Carousel"></Label>

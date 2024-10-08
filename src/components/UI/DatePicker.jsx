@@ -4,7 +4,7 @@ function DatePicker({ value, onChange }) {
       type="date"
       value={value}
       onChange={onChange}
-      className="border border-gray-300 rounded-md p-2"
+      className="border cursor-pointer border-gray-300 rounded-md p-2"
     />
   );
 }

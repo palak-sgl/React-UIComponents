@@ -3,7 +3,8 @@ function Button({ label, onClick, color }) {
     black: "bg-black text-white",
     white: "bg-white text-black",
     blue: "bg-blue-600 text-white",
-    red: "bg-red-500 text-brown-500",
+    green: "bg-green-500 text-white",
+    red: "bg-red-600 text-white",
   };
   return (
     <button

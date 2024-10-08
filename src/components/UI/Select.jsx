@@ -1,18 +1,28 @@
 import React from "react";
+// import { FaChevronDown } from "react-icons/fa";
 
 function Select(props) {
   const { options, placeholder } = props;
   return (
-    <select
-      className="border mt-2 rounded w-full px-3 py-1 focus:outline ring-1 focus-within:outline-indigo-500"
-      placeholder={placeholder}
-    >
-      {options.map((option, index) => (
-        <option key={index} value={option.value}>
-          {option.label}
+    <div className="relative">
+      <select
+        className="border mt-2 rounded w-48 p-3 py-1 focus:outline ring-1 focus-within:outline-indigo-500 appearance-none"
+        defaultValue="Choose One"
+      >
+        <option value="" disabled>
+          {placeholder}
         </option>
-      ))}
-    </select>
+
+        {options.map((option, index) => (
+          <option key={index} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+      <div className="absolute bottom-2.5 right-2 text-xs flex pointer-events-none">
+        <i className="fa-solid fa-chevron-down cursor-pointer"></i>
+      </div>
+    </div>
   );
 }
 

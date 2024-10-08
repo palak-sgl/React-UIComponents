@@ -12,12 +12,23 @@ const Carousel = ({ images }) => {
   };
 
   return (
-    <div className="relative w-full h-[300px]">
-      <img
-        src={images[currentIndex]}
-        alt={`Slide ${currentIndex}`}
-        className="w-full h-full object-cover"
-      />
+    <div className="relative w-full h-[300px] overflow-hidden">
+      <div
+        className="w-full h-full transition-transform duration-700 ease-in-out"
+        style={{
+          transform: `translateX(-${currentIndex * 100}%)`,
+          display: "flex",
+        }}
+      >
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            className="w-full h-full object-cover flex-shrink-0"
+            alt={`Slide ${index}`}
+          />
+        ))}
+      </div>
 
       <button
         onClick={prevSlide}
